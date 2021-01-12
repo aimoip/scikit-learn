@@ -73,7 +73,11 @@ class _BaseNB(ClassifierMixin, BaseEstimator, metaclass=ABCMeta):
         check_is_fitted(self)
         X = self._check_X(X)
         jll = self._joint_log_likelihood(X)
-        return self.classes_[np.argmax(jll, axis=1)]
+        try:
+           return self.classes_[np.argmax(jll, axis=1)]
+        except IndexError:
+           print("No pattern found)
+           return -1
 
     def predict_log_proba(self, X):
         """
