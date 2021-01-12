@@ -76,8 +76,8 @@ class _BaseNB(ClassifierMixin, BaseEstimator, metaclass=ABCMeta):
         try:
            return self.classes_[np.argmax(jll, axis=1)]
         except IndexError:
-           print("No pattern found)
-           return -1
+           print("No pattern found")
+           return -100
 
     def predict_log_proba(self, X):
         """
